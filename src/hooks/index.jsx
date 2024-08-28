@@ -3,7 +3,7 @@ import { CardContext } from "../context";
 import axios from "axios";
 
 const useCardContext = () => {
-	const { pensamento, setPensamento, autor, setAutor } =
+	const { pensamento, setPensamento, autor, setAutor, data, setData } =
 		useContext(CardContext);
 
 	const API__URL = "http://localhost:3000/pensamentos";
@@ -12,13 +12,13 @@ const useCardContext = () => {
 		axios
 			.get(API__URL)
 			.then((response) => {
-				setPensamento(response.data);
+				setData(response.data);
 			})
 			.catch((error) => console.error("There was an error", error));
 	}, []);
 
 	const handleDelete = (idToDelete) => {
-		setPensamento(pensamento.filter((item) => item.id !== idToDelete));
+		setData(data.filter((item) => item.id !== idToDelete));
 		axios
 			.delete(`${API__URL}/${idToDelete}`)
 			.then((response) => {
@@ -30,7 +30,7 @@ const useCardContext = () => {
 	};
 
 	const handleEdit = (id) => {
-		const item = pensamento.find((item) => item.id === id);
+		const item = data.find((item) => item.id === id);
 		if (item) {
 			const newAutoria = prompt(
 				"Digite o novo valor para autoria:",
@@ -47,9 +47,7 @@ const useCardContext = () => {
 					autoria: newAutoria,
 					conteudo: newConteudo,
 				};
-				setPensamento(
-					pensamento.map((iitem) => (iitem.id === id ? updatedItem : iitem))
-				);
+				setData(data.map((iitem) => (iitem.id === id ? updatedItem : iitem)));
 
 				axios
 					.put(`${API__URL}/${id}`, updatedItem)
@@ -93,5 +91,8 @@ const useCardContext = () => {
 		onInputChangePensamento,
 		handleEdit,
 		handleDelete,
+		data
 	};
 };
+
+export default useCardContext;
