@@ -1,12 +1,15 @@
 import { useContext, useEffect } from "react";
 import { CardContext } from "../context";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 const useCardContext = () => {
 	const { pensamento, setPensamento, autor, setAutor, data, setData } =
 		useContext(CardContext);
 
 	const API__URL = "http://localhost:3000/pensamentos";
+
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		axios
@@ -87,6 +90,7 @@ const useCardContext = () => {
 		pensamento,
 		autor,
 		handleSubmit,
+		navigate,
 		onInputChangeAutor,
 		onInputChangePensamento,
 		handleEdit,
