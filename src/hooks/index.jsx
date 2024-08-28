@@ -9,7 +9,7 @@ const useCardContext = () => {
 
 	const API__URL = "http://localhost:3000/pensamentos";
 
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		axios
@@ -71,7 +71,6 @@ const useCardContext = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-
 		axios
 			.post(API__URL, {
 				conteudo: pensamento,
@@ -83,6 +82,9 @@ const useCardContext = () => {
 			.catch((error) => {
 				console.error(error);
 			});
+		setTimeout(() => {
+			navigate(+1);
+		}, 0);
 	};
 
 	return {
@@ -94,7 +96,7 @@ const useCardContext = () => {
 		onInputChangePensamento,
 		handleEdit,
 		handleDelete,
-		data
+		data,
 	};
 };
 
