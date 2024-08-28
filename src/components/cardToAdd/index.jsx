@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import useCardContext from "../../hooks";
+import useCardContext from "../../hooks/useCardContext";
 import Button from "../button";
 import InputForm from "../input";
 import Title from "../title";
