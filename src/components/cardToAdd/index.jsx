@@ -1,37 +1,15 @@
-import { useState } from "react";
+import useCardContext from "../../hooks";
 import Button from "../button";
 import InputForm from "../input";
 import Title from "../title";
-import axios from "axios";
 
 const CardToAdd = () => {
-	const [pensamento, setPensamento] = useState("");
-	const [autor, setAutor] = useState("");
-
-
-	const onInputChangePensamento = (event) => {
-		setPensamento(event.target.value);
-	};
-
-	const onInputChangeAutor = (event) => {
-		setAutor(event.target.value);
-	};
-
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		alert(`Pensamento: ${pensamento}\nAutor(a):${autor}`);
-
-		axios.post('http://localhost:3000/pensamentos', {
-			conteudo: pensamento,
-			autoria: autor
-		  })
-		  .then((response) => {
-			console.log(response)
-		  })
-		  .catch ((error) => {
-			console.error(error)
-		  })
-	};
+	const {
+		handleSubmit,
+		pensamento,
+		onInputChangePensamento,
+		onInputChangeAutor,
+	} = useCardContext();
 
 	return (
 		<form
@@ -65,14 +43,10 @@ const CardToAdd = () => {
 				/>
 			</div>
 			<div className="flex justify-center gap-4">
-				<Button
-					type="submit"
-					background={"#041832"}
-					color={"white"}
-				>
+				<Button type="submit" background={"#041832"} color={"white"}>
 					Adicionar
 				</Button>
-				<Button type="reset"background={"white"} color={"#041832"}>
+				<Button type="reset" background={"white"} color={"#041832"}>
 					Cancelar
 				</Button>
 			</div>
