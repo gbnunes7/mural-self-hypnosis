@@ -31,8 +31,6 @@ const CardToAdd = () => {
 		  .catch ((error) => {
 			console.error(error)
 		  })
-		
-
 	};
 
 	return (
@@ -74,7 +72,7 @@ const CardToAdd = () => {
 				>
 					Adicionar
 				</Button>
-				<Button background={"white"} color={"#041832"}>
+				<Button type="reset"background={"white"} color={"#041832"}>
 					Cancelar
 				</Button>
 			</div>
