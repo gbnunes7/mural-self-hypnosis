@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useCardContext from "../../hooks";
 import Button from "../button";
 import InputForm from "../input";
@@ -48,6 +49,9 @@ const CardToAdd = () => {
 				</Button>
 				<Button type="reset" background={"white"} color={"#041832"}>
 					Cancelar
+				</Button>
+				<Button >
+					<Link to="/mural">Meu Mural</Link>
 				</Button>
 			</div>
 		</form>
