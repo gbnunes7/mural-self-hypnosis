@@ -1,11 +1,11 @@
 import { useContext, useEffect } from "react";
-import { CardContext } from "../context";
+import { CardContext } from "../../context";
 import axios from "axios";
 import { useNavigate } from "react-router";
 
 const useCardContext = () => {
-	const { pensamento, setPensamento, autor, setAutor, data, setData } =
-		useContext(CardContext);
+	const { state, dispatch } = useContext(CardContext);
+	const { pensamento, autor, data } = state;
 
 	const API__URL = "http://localhost:3000/pensamentos";
 
@@ -15,13 +15,13 @@ const useCardContext = () => {
 		axios
 			.get(API__URL)
 			.then((response) => {
-				setData(response.data);
+				dispatch({ type: "SET_DATA", payload: response.data });
 			})
 			.catch((error) => console.error("There was an error", error));
 	}, []);
 
 	const handleDelete = (idToDelete) => {
-		setData(data.filter((item) => item.id !== idToDelete));
+		dispatch({ type: "DELETE_ITEM", payload: { id: idToDelete } });
 		axios
 			.delete(`${API__URL}/${idToDelete}`)
 			.then((response) => {
@@ -50,7 +50,11 @@ const useCardContext = () => {
 					autoria: newAutoria,
 					conteudo: newConteudo,
 				};
-				setData(data.map((iitem) => (iitem.id === id ? updatedItem : iitem)));
+
+				dispatch({
+					type: "UPDATE_ITEM",
+					payload: { id, updates: updatedItem },
+				});
 
 				axios
 					.put(`${API__URL}/${id}`, updatedItem)
@@ -62,11 +66,11 @@ const useCardContext = () => {
 		}
 	};
 	const onInputChangePensamento = (event) => {
-		setPensamento(event.target.value);
+		dispatch({ type: "SET_PENSAMENTO", payload: event.target.value });
 	};
 
 	const onInputChangeAutor = (event) => {
-		setAutor(event.target.value);
+		dispatch({ type: "SET_AUTOR", payload: event.target.value });
 	};
 
 	const handleSubmit = (event) => {
