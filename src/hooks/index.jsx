@@ -71,7 +71,6 @@ const useCardContext = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		alert(`Pensamento: ${pensamento}\nAutor(a):${autor}`);
 
 		axios
 			.post(API__URL, {
