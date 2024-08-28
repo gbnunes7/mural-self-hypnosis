@@ -48,7 +48,7 @@ const CardToAdd = () => {
 					Adicionar
 				</Button>
 				<Button type="reset" background={"white"} color={"#041832"}>
-					Cancelar
+					Apagar
 				</Button>
 				<Button >
 					<Link to="/mural">Meu Mural</Link>
