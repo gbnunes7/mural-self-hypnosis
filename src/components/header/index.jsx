@@ -1,3 +1,5 @@
+import imagemHeader from "/src/components/header/header-image.svg"
+
 const Header = () => {
 	return (
 		<div className="flex justify-center items-center gap-32 bg-[#041832] py-[50px] px-[32px] min-h-[100px]">
@@ -7,7 +9,7 @@ const Header = () => {
 				</p> 
 			</div>
 			<img
-				src="/public/images/header-image.svg"
+				src= {imagemHeader}
 				alt="Imagem de Laptop"
 				className="max-w-[250px]"
 			/>
