@@ -1,6 +1,6 @@
 import Title from "../../components/title";
 import CardModel from "../../components/cardModel";
-import useCardContext from "../../hooks";
+import useCardContext from "../../hooks/useCardContext";
 import { IoMdArrowBack } from "react-icons/io";
 
 const MuralPage = () => {
