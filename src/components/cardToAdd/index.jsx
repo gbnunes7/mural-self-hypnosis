@@ -4,7 +4,7 @@ import Title from "../title";
 
 const CardToAdd = () => {
 	return (
-		<form id="form-pensamento" className="bg-white flex flex-col py-10 px-8 min-w-[700px] min-h-[350px] rounded-2xl shadow-xl shadow-[#04183214] gap-10">
+		<form id="form-pensamento" className="bg-[#f9f9f9] flex flex-col py-10 px-8 min-w-[700px] min-h-[350px] rounded-2xl shadow-xl shadow-[#04183214] gap-10">
 			<div className="flex flex-col gap-4">
 				<Title>
 					<h2>Autosugestão ou Ideia</h2>
