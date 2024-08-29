@@ -7,7 +7,7 @@ const useCardContext = () => {
 	const { state, dispatch } = useContext(CardContext);
 	const { pensamento, autor, data } = state;
 
-	const API__URL = "http://localhost:3000/pensamentos";
+	const API__URL = "https://json-server-vercel-kappa-coral.vercel.app/pensamentos";
 
 	const navigate = useNavigate();
 
